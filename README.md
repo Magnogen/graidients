@@ -1,5 +1,5 @@
 # Graidients
-###### Make patterns with AI https://magnogen.net/Graidients
+###### Make patterns with AI https://magnogen.net/graidients
 
 This is the source code for a section of my website.
 You're welcome to snoop around to see how it works, maybe even make a pull request!
