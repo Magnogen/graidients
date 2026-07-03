@@ -73,6 +73,46 @@ aside {
 :not([need][sad])[input="number"]:hover         { cursor: default; }
 :not([need][sad])[input="number"] span          { color: #80f080; cursor: pointer; }
 :not([need][sad])[input="number"] .reader       { color: #fff4; cursor: initial; }
+.reader-editor {
+  width: 6em;
+  margin-left: 0.25em;
+  padding: 0 0.25em;
+  border: 1px solid #80f08066;
+  border-radius: 0.2em;
+  background: #161816;
+  color: #80f080;
+  font: inherit;
+}
+.network-preview {
+  color: #fff4;
+  cursor: initial;
+  margin-top: 0.4em;
+}
+.network-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  margin: 0.1em 0.6em;
+}
+.network-layer {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: #fff;
+}
+.network-layer button {
+  padding: 0;
+  min-width: 2em;
+  color: #80f080;
+  cursor: pointer;
+}
+.network-layer-value {
+  color: #fff4;
+  min-width: 8.5em;
+}
+.network-layer-actions {
+  margin: 0.25em 0.6em 0 0.6em;
+}
 
 [need][sad] { color: #fff4; cursor: initial; }
 [need][sad]:before { content: '// '; }
@@ -114,6 +154,30 @@ main {
   height: 0px;
   padding-block: 0px;
   overflow: hidden;
+}
+
+.github-banner {
+  position: fixed;
+  top: 2rem;
+  right: -4rem;
+  z-index: 1;
+  width: 13.5rem;
+  padding: 0.45rem 0;
+  text-align: center;
+  color: #101310;
+  background: #80f080;
+  border: 1px solid #9cff9c;
+  box-shadow: 0 8px 20px #0008;
+  transform: rotate(45deg);
+  transform-origin: center;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.github-banner:hover {
+  background: #9aff9a;
 }
 
 canvas {

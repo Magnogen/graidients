@@ -5,27 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="shortcut icon" href="https://magnogen.net/src/favicon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <title>Graidients | Magnogen</title>
     <meta name="description" content="Make gradients and patterns with Neural Networks!" />
-    <script src="https://src.magnogen.net/tinylib.js" defer></script>
-    <script src="network.js" defer></script>
-    <script src="ui.js"      defer></script>
-    <script src="chunk.js"   defer></script>
-    <script src="main.js"    defer></script>
+
+    <script src="https://src.magnogen.net/dom.js"></script>
+    <script src="https://src.magnogen.net/random.js"></script>
+
+    <script type="module" src="./sketch.js"></script>
   </head>
   <body>
     <aside>
       <div>
         <h4>General</h4>
+        <button id="restart_render" class="underline">Restart Render</button>
         <span input="number" id="scale" class="">Scale</span>
-        <span input="number" id="resolution" map="i => 2**i" crement="1" min="2" class="">Image Resolution</span>
+        <span input="number" id="resolution" map="i => 2**i" crement="1" min="3" max="12" class="">Image Resolution</span>
+        <span input="number" id="chunk_size" map="i => 2**i" crement="1" min="0" max="8" class="">Render Chunk Size</span>
       </div>
       <div>
-        <h4>Rendering</h4>
-        <button id="restart_render" class="underline">Restart Render</button>
-        <span input="boolean" id="grain" class="">Render Grain</span>
-        <span input="number" id="chunk_size" map="i => 2**i" crement="1" min="0" max="8" class="">Render Chunk Size</span>
+        <h4>Network</h4>
+        <div id="network_layers_editor" class="network-layers"></div>
+        <div class="network-layer-actions">
+          <button id="add_layer" class="underline" type="button">Add Layer</button>
+          <button id="remove_layer" class="underline" type="button">Remove Layer</button>
+        </div>
+        <span id="network_architecture_preview" class="network-preview"></span>
       </div>
       <div>
         <h4>Domain Warping</h4>
@@ -68,5 +72,13 @@
       </div>
       <span hint>Press Enter, or Tap the image to generate new patterns</span>
     </main>
+    <a
+      class="github-banner"
+      href="https://github.com/Magnogen/graidients"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      View on GitHub
+    </a>
   </body>
 </html>
