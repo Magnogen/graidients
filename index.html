@@ -18,9 +18,28 @@
       <div>
         <h4>General</h4>
         <button id="restart_render" class="underline">Restart Render</button>
+        <span class="mode-label">Render Mode</span>
+        <div class="render-mode-switch">
+          <span render-mode-option="rgb" class="mode-option">RGB</span>
+          <span render-mode-option="palette" class="mode-option">Palette</span>
+        </div>
         <span input="number" id="scale" class="">Scale</span>
         <span input="number" id="resolution" map="i => 2**i" crement="1" min="3" max="12" class="">Image Resolution</span>
         <span input="number" id="chunk_size" map="i => 2**i" crement="1" min="0" max="8" class="">Render Chunk Size</span>
+      </div>
+      <div id="palette_editor_section" class="palette-editor-section">
+        <h4>Palette Editor</h4>
+        <span class="palette-help">Used in Palette mode: output maps through this ramp.</span>
+        <div class="palette-presets">
+          <label class="palette-preset-label" for="palette_preset_select">Preset</label>
+          <select id="palette_preset_select" class="palette-preset-select"></select>
+          <button id="random_palette_preset" class="underline" type="button">Random</button>
+        </div>
+        <div id="palette_preview" class="palette-preview"></div>
+        <div id="palette_stops" class="palette-stops"></div>
+        <div class="palette-actions">
+          <button id="add_palette_stop" class="underline" type="button">Add Stop</button>
+        </div>
       </div>
       <div>
         <h4>Network</h4>

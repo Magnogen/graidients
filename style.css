@@ -114,6 +114,142 @@ aside {
   margin: 0.25em 0.6em 0 0.6em;
 }
 
+.mode-label {
+  display: block;
+  margin: 0.1em 0.6em 0.25em;
+  color: #fff8;
+}
+
+.render-mode-switch {
+  display: inline-flex;
+  gap: 0.15em;
+  margin: 0.1em 0.6em 0.6em;
+  padding: 0.15em;
+  border: 1px solid #80f08044;
+  border-radius: 0.4em;
+  background: #16181666;
+}
+
+.mode-option {
+  display: inline-block;
+  margin: 0;
+  padding: 0.15em 0.65em;
+  border-radius: 0.25em;
+  color: #fff8;
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.mode-option:hover {
+  color: #fff;
+}
+
+.mode-option.active {
+  color: #80f080;
+  background: #80f0801a;
+}
+
+.palette-editor-section {
+  transition: opacity 0.2s;
+}
+
+.palette-editor-section.hidden {
+  display: none;
+}
+
+.palette-help {
+  display: block;
+  margin: 0.1em 0.6em 0.6em;
+  color: #fff6;
+  white-space: normal;
+  cursor: initial;
+}
+
+.palette-presets {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.4em;
+  margin: 0.1em 0.6em 0.5em;
+}
+
+.palette-preset-label {
+  color: #fff8;
+}
+
+.palette-preset-select {
+  border: 1px solid #80f08066;
+  border-radius: 0.2em;
+  background: #161816;
+  color: #80f080;
+  font: inherit;
+  padding: 0.1em 0.2em;
+}
+
+.palette-presets button {
+  margin: 0;
+  padding: 0.15em 0.4em;
+}
+
+.palette-preview {
+  height: 1.2em;
+  margin: 0.1em 0.6em 0.5em;
+  border-radius: 0.25em;
+  border: 1px solid #80f08044;
+  background: linear-gradient(to right, #000000, #ffffff);
+}
+
+.palette-stops {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  margin: 0.1em 0.6em;
+}
+
+.palette-stop-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.palette-stop-pos {
+  width: 4.4em;
+  border: 1px solid #80f08066;
+  border-radius: 0.2em;
+  background: #161816;
+  color: #80f080;
+  font: inherit;
+}
+
+.palette-stop-color {
+  width: 2.1em;
+  height: 1.35em;
+  padding: 0;
+  border: 1px solid #80f08066;
+  border-radius: 0.2em;
+  background: #161816;
+  cursor: pointer;
+}
+
+.palette-stop-delete {
+  margin: 0;
+  padding: 0.15em 0.4em;
+  color: #fff6;
+  cursor: pointer;
+}
+
+.palette-stop-delete:hover {
+  color: #80f080;
+}
+
+.palette-actions {
+  margin: 0.25em 0.6em 0;
+}
+
+.palette-actions button {
+  margin: 0;
+}
+
 [need][sad] { color: #fff4; cursor: initial; }
 [need][sad]:before { content: '// '; }
 
