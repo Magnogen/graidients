@@ -15,6 +15,19 @@ export const valleys = (n) => {
   return Math.pow(Math.abs(x), 2 / 3);
 };
 
+let fractal_octaves = 5;
+
+const normalizeOctaves = (octaves) => {
+  const parsed = Number(octaves);
+  if (!Number.isFinite(parsed)) return fractal_octaves;
+  return Math.max(1, Math.round(parsed));
+};
+
+export const setFractalOctaves = (octaves) => {
+  fractal_octaves = normalizeOctaves(octaves);
+  return fractal_octaves;
+};
+
 const hashNoise = (x, seed = 0.5) => {
   const h = Math.sin(x * 12.9898 + seed * 78.233) * 43758.5453123;
   return h - Math.floor(h);
@@ -40,26 +53,28 @@ export const smooth_value_noise = (n) => {
   return a * (1 - eased) + b * eased;
 };
 
-export const fractal_func = (func) => {
+const fractal_sample = (func, n, octaves) => {
   const falloff = 2;
   const shift = 437.585453123;
-  const octaves = 5;
-  return (n) => {
-    let value = 0;
-    let amplitude = 1 / falloff;
-    let x = n;
-    for (let i = 0; i < octaves; i++) {
-      value += amplitude * func(x);
-      x = falloff * x + shift;
-      amplitude /= falloff;
-    }
-    return value;
-  };
+  let value = 0;
+  let amplitude = 1 / falloff;
+  let x = n;
+  for (let i = 0; i < octaves; i++) {
+    value += amplitude * func(x);
+    x = falloff * x + shift;
+    amplitude /= falloff;
+  }
+  return value;
 };
-export const fractal_sin = (n) => fractal_func(sin)(n);
-export const fractal_fold = (n) => fractal_func(fold)(n);
-export const fractal_value_noise = (n) => fractal_func(value_noise)(n * 0.75) * 1.75;
-export const fractal_smooth_value_noise = (n) => fractal_func(smooth_value_noise)(n * 0.75) * 1.75;
+
+export const fractal_func = (func, octaves = fractal_octaves) => {
+  const resolvedOctaves = normalizeOctaves(octaves);
+  return (n) => fractal_sample(func, n, resolvedOctaves);
+};
+export const fractal_sin = (n) => fractal_sample(sin, n, fractal_octaves);
+export const fractal_fold = (n) => fractal_sample(fold, n, fractal_octaves);
+export const fractal_value_noise = (n) => fractal_sample(value_noise, n * 0.75, fractal_octaves) * 1.75;
+export const fractal_smooth_value_noise = (n) => fractal_sample(smooth_value_noise, n * 0.75, fractal_octaves) * 1.75;
 
 export const sin = (n) => 0.5 * (Math.sin(Math.PI * (n - 0.5)) + 1);
 export const tan = (n) => clamp(0.5 * (Math.tan(n * 0.9) + 1));

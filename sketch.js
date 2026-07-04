@@ -13,6 +13,7 @@ on('load', async () => {
     get resolution() { return this.res; },
     set resolution(v) { this.res = v; resize(2 ** v); return v; },
     hidden_nodes: [4, 4, 4, 4],
+    octaves: 5,
     domain_warping: false,
     warping_amount: 2,
     noise_seed: Math.random(),

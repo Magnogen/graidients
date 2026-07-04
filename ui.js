@@ -1,9 +1,11 @@
-import { activators, activator_options } from './activators.js';
+import { activators, activator_options, setFractalOctaves } from './activators.js';
 
 export function bindUI({ canvas, settings, renderState, regenerate }) {
   if (!Array.isArray(settings.hidden_nodes) || settings.hidden_nodes.length === 0) {
     settings.hidden_nodes = [4];
   }
+  settings.octaves = Math.max(1, Math.round(Number.isFinite(settings.octaves) ? settings.octaves : 5));
+  setFractalOctaves(settings.octaves);
 
   const minNodesPerLayer = 1;
   const maxNodesPerLayer = 64;
@@ -148,7 +150,14 @@ export function bindUI({ canvas, settings, renderState, regenerate }) {
     const updateValue = (nextValue) => {
       if (!canEdit()) return false;
       if (!Number.isFinite(nextValue)) return false;
-      settings[el.id] = Math.max(min, Math.min(max, nextValue));
+      let value = Math.max(min, Math.min(max, nextValue));
+      if (el.id === 'octaves') {
+        value = Math.max(1, Math.round(value));
+      }
+      settings[el.id] = value;
+      if (el.id === 'octaves') {
+        setFractalOctaves(settings.octaves);
+      }
       if (el.getAttribute('regenerate') === 'network') regenerate();
       reader.innerHTML = ' = ' + map(settings[el.id]);
       renderState.needsRefresh = true;
