@@ -1,74 +1,7 @@
 import { activators, activator_options, setFractalOctaves } from './activators.js';
+import { palettePresets } from './palettes.js';
 
 export function bindUI({ canvas, settings, renderState, regenerate }) {
-  const palettePresets = [
-    {
-      id: 'mosslight',
-      name: 'Mosslight',
-      ramp: [
-        { at: 0.0, rgb: [0.07, 0.11, 0.18] },
-        { at: 0.25, rgb: [0.17, 0.33, 0.46] },
-        { at: 0.5, rgb: [0.41, 0.61, 0.53] },
-        { at: 0.75, rgb: [0.8, 0.72, 0.43] },
-        { at: 1.0, rgb: [0.98, 0.91, 0.73] }
-      ]
-    },
-    {
-      id: 'sunset',
-      name: 'Sunset Heat',
-      ramp: [
-        { at: 0.0, rgb: [0.05, 0.02, 0.1] },
-        { at: 0.3, rgb: [0.34, 0.06, 0.28] },
-        { at: 0.55, rgb: [0.76, 0.23, 0.2] },
-        { at: 0.8, rgb: [0.96, 0.58, 0.28] },
-        { at: 1.0, rgb: [1.0, 0.88, 0.62] }
-      ]
-    },
-    {
-      id: 'oceanic',
-      name: 'Oceanic',
-      ramp: [
-        { at: 0.0, rgb: [0.01, 0.08, 0.16] },
-        { at: 0.32, rgb: [0.03, 0.27, 0.46] },
-        { at: 0.58, rgb: [0.08, 0.53, 0.64] },
-        { at: 0.8, rgb: [0.43, 0.8, 0.73] },
-        { at: 1.0, rgb: [0.9, 0.99, 0.89] }
-      ]
-    },
-    {
-      id: 'mono',
-      name: 'Mono Film',
-      ramp: [
-        { at: 0.0, rgb: [0.03, 0.03, 0.03] },
-        { at: 0.28, rgb: [0.19, 0.19, 0.19] },
-        { at: 0.58, rgb: [0.46, 0.46, 0.46] },
-        { at: 0.84, rgb: [0.78, 0.78, 0.78] },
-        { at: 1.0, rgb: [0.98, 0.98, 0.98] }
-      ]
-    },
-    {
-      id: 'neon',
-      name: 'Neon Grid',
-      ramp: [
-        { at: 0.0, rgb: [0.02, 0.0, 0.07] },
-        { at: 0.25, rgb: [0.14, 0.0, 0.48] },
-        { at: 0.5, rgb: [0.0, 0.62, 0.92] },
-        { at: 0.74, rgb: [0.15, 0.95, 0.55] },
-        { at: 1.0, rgb: [0.98, 0.98, 0.2] }
-      ]
-    },
-    {
-      id: 'ember',
-      name: 'Ember Forge',
-      ramp: [
-        { at: 0.0, rgb: [0.03, 0.01, 0.01] },
-        { at: 0.28, rgb: [0.24, 0.05, 0.02] },
-        { at: 0.52, rgb: [0.55, 0.13, 0.02] },
-        { at: 0.76, rgb: [0.89, 0.39, 0.07] },
-        { at: 1.0, rgb: [1.0, 0.82, 0.36] }
-      ]
-    }
-  ];
   const customPresetId = 'custom';
   const fixedStopPositions = [0, 0.25, 0.5, 0.75, 1];
   const hslToRgb = (h, s, l) => {
