@@ -39,6 +39,8 @@ const sampleRamp = (ramp, t) => {
   return last.rgb;
 };
 
+const { shuffle } = Rng(Mulberry());
+
 export async function runRenderer({ canvas, ctx, settings, getNetwork, state }) {
   let cacheChunkSize = -1;
   let cacheWidth = -1;
